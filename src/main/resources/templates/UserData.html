@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>User Data</title>
+<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+<script type="text/javascript"
+	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/jquery.min.js}"></script>
+
+</head>
+<body>
+
+	<!-- Menu bar starts Here -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand/logo -->
+
+
+
+		<!-- Links -->
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link text-white"
+				th:href="@{/user/register}">
+					<h4>REGISTER</h4>
+			</a></li>
+			<li class="nav-item"><a class="nav-link text-white"
+				th:href="@{/user/all}">
+					<h4>VIEW ALL</h4>
+			</a></li>
+
+		</ul>
+	</nav>
+	<!-- Menu bar ends Here -->
+
+
+	<div class="container">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-white">
+				<h3>Welcome to Product Data Page!!</h3>
+			</div>
+			<div class="card-body">
+				<table class="table table-bordered table-hover">
+					<tr class="table-info">
+						<th>USER ID</th>
+						<th>USERNAME</th>
+						<th>PASSWORD</th>
+						<th>ROLE</th>
+						<th>DESCRIPTION</th>
+						<th>USERACTIVE</th>
+						<th>CREATED DATE</th>
+						<th>UPDATED DATE</th>
+						<th colspan="2">OPERATIONS</th>
+					</tr>
+					<tr th:each="ob:${list}">
+						<td th:text="${ob.userid}"></td>
+						<td th:text="${ob.userName}"></td>
+						<td th:text="${ob.password}"></td>
+						<td th:text="${ob.role}"></td>
+						<td th:text="${ob.description}"></td>
+						<td th:text="${ob.userActive}"></td>
+						<td th:text="${ob.createdDate}"></td>
+						<td th:text="${ob.updatedDate}"></td>
+
+
+						<td><a th:href="@{/user/delete/{id}(id=${ob.userid})}"> <span
+								class="btn btn-danger">DELETE</span>
+						</a></td>
+						<td><a th:href="@{/user/edit/{id}(id=${ob.userid})}"> <span
+								class="btn btn-success">EDIT</span>
+						</a></td>
+					</tr>
+
+				</table>
+			</div>
+			<!-- Card Body End Here -->
+
+
+
+			<div class="card-footer">
+				<span th:text="${message}"></span>
+			</div>
+
+
+		</div>
+		<!-- card end here -->
+
+	</div>
+	<!-- container End here -->
+
+
+
+</body>
+</html>
